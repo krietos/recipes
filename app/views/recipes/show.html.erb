@@ -1,0 +1,24 @@
+<h1><%= @recipe.name %></h1>
+
+<h3>Rating: <%= @recipe.rating %> stars</h3>
+
+<h3>Tags:</h3>
+
+
+
+<form action='/recipes' method='post'>
+<label for='tags'>Tag</label>
+  <select name='recipe[rating]' value='<%= @recipe.rating %>'>
+    <%Tag.all.each do |tag|%>
+      <option value='<%= tag.id %>' ><%= tag.name %></option>
+    <% end %>
+  </select>
+  <button>Add Tag</button>
+</form>
+
+
+<a href='/recipes/<%= @recipe.id %>/edit' class='btn btn-primary'>Edit Recipe</a>
+
+<a href='/recipes/<%= @recipe.id %>' class='btn btn-danger' data-method='delete' rel='nofollow'>Delete</a>
+
+<a href='/recipes/' class='btn btn-primary'>Go Back</a>
