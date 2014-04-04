@@ -1,10 +1,22 @@
 <h1>Recipe List</h1>
 
+
 <ul>
 <% @recipes.each do |recipe| %>
-  <li><a href='/recipes/<%= recipe.id %>'><%= recipe.name %></a></li>
+  <li><a href='/recipes/<%= recipe.id %>'><%= "#{recipe.name} Rating:" %> <%= recipe.ave_rating == 0 ? "no ratings" : "#{recipe.ave_rating}" %></a></li>
 <% end %>
 </ul>
+
+<a href='/recipes/sort/featured' class='btn btn-primary' data-method='get'>Featured Recipes!</a>
+<a href='/recipes/sort/rating' class='btn btn-primary' data-method='get'>Sort by rating!</a>
+<a href='/recipes/sort/name' class='btn btn-primary' data-method='get'>Sort by name!</a>
+<a href='/recipes/sort/new' class='btn btn-primary' data-method='get'>Sort by new!</a>
+
+
+
+
+
+
 
 <%= render('layouts/errors', :object => @recipe) %>
 

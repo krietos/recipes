@@ -1,8 +1,17 @@
 class RecipesController < ApplicationController
   def index
     @recipe = Recipe.new
-    @recipes = Recipe.all
-    render('index.html.erb')
+    if params[:sort] == 'rating'
+      @recipes = Recipe.sort_ratings
+    elsif params[:sort] == 'name'
+      @recipes = Recipe.sort_name
+    elsif params[:sort] == 'featured'
+      @recipes = Recipe.sort_featured
+    elsif params[:sort] == 'new'
+      @recipes = Recipe.sort_new
+    else
+      @recipes = Recipe.all
+    end
   end
 
   def show
